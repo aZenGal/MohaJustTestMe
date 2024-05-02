@@ -15,7 +15,7 @@ from modules.niktoscan import nikto_scan
 from modules.nmapscan import nmap_scan
 
 ans = True
-version = "1.0.7"
+version = "1.0"
 home = os.path.expanduser("~")
 
 
@@ -78,7 +78,7 @@ def call_def(func, num=1):
 
 
 def ver_check():
-    ver_url = "https://raw.githubusercontent.com/Anteste/MohaJustTestMe/master/conf/version.txt" #A CHANGER
+    ver_url = "https://github.com/aZenGal/MohaJustTestMe/blob/main/conf/version.txt"
     try:
         ver_rqst = requests.get(ver_url)
         ver_sc = ver_rqst.status_code
