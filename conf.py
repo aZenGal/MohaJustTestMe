@@ -78,7 +78,7 @@ def call_def(func, num=1):
 
 
 def ver_check():
-    ver_url = "https://github.com/aZenGal/MohaJustTestMe/blob/main/conf/version.txt"
+    ver_url = "https://github.com/aZenGal/MohaJustTestMe/blob/main/version.txt"
     try:
         ver_rqst = requests.get(ver_url)
         ver_sc = ver_rqst.status_code
