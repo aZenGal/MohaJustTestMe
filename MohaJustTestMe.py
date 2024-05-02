@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-import conf.conf as conf
-
+import conf
 
 def main():
     while conf.ans:

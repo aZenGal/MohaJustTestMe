@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import conf.conf as conf
+import conf as conf
 
 
 def full_scan():
