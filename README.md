@@ -1,4 +1,4 @@
-# 📡 MohaTestMe
+# 📡 MohaJustTestMe
 Outil codé en Python permettant d'automatiser l'exécution des outils suivants : Nmap , Nikto et Dirsearch mais permet aussi d'automatiser la génération de rapports lors d'un test de pénétration.
 Outil codé en Python permettant d'automatiser l'exécution des outils suivants : Nmap , Nikto et Dirsearch.<br/> 
 Permet également d'automatiser la génération de rapports lors d'un test de pénétration.
@@ -9,7 +9,7 @@ Permet également d'automatiser la génération de rapports lors d'un test de p�
 * Automatiser le test de pénétration
 ------------------------------------
 <br/>
-<a href=""><img src="" alt="MohaTestMe-Home" border="0"></a>
+<a href=""><img src="" alt="MohaJustTestMe-Home" border="0"></a>
 <br />
 
 # Systèmes d'exploitations testés
@@ -28,10 +28,10 @@ Permet également d'automatiser la génération de rapports lors d'un test de p�
 ## 🛠 Installation
 ### Linux & Unix
 ```
-$ git clone https://github.com/aZenGal/MohaTestMe.git
-$ cd MohaTestMe
+$ git clone https://github.com/aZenGal/MohaJustTestMe.git
+$ cd MohaJustTestMe
 $ ./install.sh
-$ MohaTestMe
+$ MohaJustTestMe
 ```
 Egalement, les dépendances peuvent être installés manuellement avec `pip install -r requirements.txt`.
 
