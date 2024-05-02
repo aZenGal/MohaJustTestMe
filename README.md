@@ -11,16 +11,19 @@ Permet également d'automatiser la génération de rapports lors d'un test de p�
 <br/>
 <a href=""><img src="" alt="MohaTestMe-Home" border="0"></a>
 <br />
+
 # Systèmes d'exploitations testés
 - Kali Linux 2024.1
+
 ## Current tools
 > [!WARNING]
 > Certains outils peuvent ne pas fonctionner sur les systèmes Linux autre que Kali Linux 2024.1
 | Outil                 | Description                                                                                                       |
 |-----------------------|-------------------------------------------------------------------------------------------------------------------|
-| Nmap                  | Permet de scanner les ports ouverts et identifier les services hébergés                                      |
+| Nmap                  | Permet de scanner les ports ouverts et identifier les services hébergés                                           |
 | Nikto                 | Permet de scanner un hôte et d’afficher toutes les failles potentielles.                                          |
 | Dirsearch             | Permet effectuer un scan de contenu Web.                                                                          |
+
 ## 🛠 Installation
 ### Linux & Unix
 ```
@@ -30,8 +33,10 @@ $ ./install.sh
 $ MohaTestMe
 ```
 Egalement, les dépendances peuvent être installés manuellement avec `pip install -r requirements.txt`.
+
 # ✨ Plus d'informations
 Ce projet est libre et open source, codé (en parti) par Mohamed-Ali.
+
 # Merci à
 * Trabelsi Mohamed-Ali - Ultra Security Team Leader <br/>
 * Iliass A. - Ultra Security Team Helper
