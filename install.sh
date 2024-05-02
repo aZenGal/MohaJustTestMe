@@ -19,5 +19,5 @@ elif [ "$(grep -Ei 'redhat|centos' /etc/*release)" ]; then ##To install on RPM C
 fi
 
 pip3 install --user -r conf/requirements.txt
-sudo ln -s "$(pwd)"/mohatestme.py /usr/local/bin/mohatestme
+sudo ln -s "$(pwd)"/MohaJustTestMe.py /usr/local/bin/MohaJustTestMe
 git clone --depth 1 https://github.com/maurosoria/dirsearch.git ~/.local/share/dirsearch

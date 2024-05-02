@@ -8,7 +8,7 @@ def main():
         print(
             "==================================================================="
         )
-        print(conf.colored(conf.text2art("MohaTestMe", "larry3d"), "cyan"))
+        print(conf.colored(conf.text2art("MohaJustTestMe", "larry3d"), "cyan"))
         print(
             conf.colored("[>]", "red", attrs=["bold"]) +
             conf.colored("Créé par : Mohamed-Ali\n", "magenta", attrs=["bold"]))

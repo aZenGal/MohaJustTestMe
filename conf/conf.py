@@ -20,14 +20,14 @@ home = os.path.expanduser("~")
 
 
 def re_open():
-    installed = True if os.path.exists("/usr/local/bin/mohatestme") else False
+    installed = True if os.path.exists("/usr/local/bin/MohaJustTestMe") else False
 
     if installed:
-        os.system("sudo mohatestme")
+        os.system("sudo MohaJustTestMe")
         sys.exit()
 
     else:
-        os.system("sudo python3 mohatestme.py")
+        os.system("sudo python3 MohaJustTestMe.py")
         sys.exit(())
 
 
@@ -78,7 +78,7 @@ def call_def(func, num=1):
 
 
 def ver_check():
-    ver_url = "https://raw.githubusercontent.com/Anteste/mohatestme/master/conf/version.txt" #A CHANGER
+    ver_url = "https://raw.githubusercontent.com/Anteste/MohaJustTestMe/master/conf/version.txt" #A CHANGER
     try:
         ver_rqst = requests.get(ver_url)
         ver_sc = ver_rqst.status_code
@@ -89,14 +89,14 @@ def ver_check():
             if version == github_ver:
                 print(
                     colored(
-                        "Votre version de MohaTestMe est à jour\n",
+                        "Votre version de MohaJustTestMe est à jour\n",
                         "yellow",
                         attrs=["reverse"],
                     ))
             else:
                 print(
                     colored(
-                        f"Votre version de MohaTestMe est obsolète, nouvelle version disponible: {format(github_ver)} \n",
+                        f"Votre version de MohaJustTestMe est obsolète, nouvelle version disponible: {format(github_ver)} \n",
                         "red",
                         attrs=["reverse"],
                     ))
