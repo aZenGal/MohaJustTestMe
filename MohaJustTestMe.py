@@ -4,6 +4,7 @@ import conf
 
 def main():
     while conf.ans:
+        conf.os.system("clear")
         print("===================================================================")
         print(conf.colored(conf.text2art("MohaJustTestMe", "larry3d"), "cyan"))
         print(conf.colored("[>]", "red", attrs=["bold"]) + conf.colored("Créé par : Mohamed-Ali TRABELSI\n", "magenta", attrs=["bold"]))

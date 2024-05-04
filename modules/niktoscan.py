@@ -21,8 +21,6 @@ def nikto_scan():
 
     conf.create_dir(nikto_output)
 
-    conf.os.system(f"nikto +h {nikto_host} -output {nikto_output}/nikto.txt")
+    conf.os.system(f"nikto -h {nikto_host} -output {nikto_output}/nikto.txt")
 
-    print(
-        "______________________________________________________________________"
-    )
+    print("______________________________________________________________________")

@@ -89,7 +89,7 @@ def nmap_scan():
 
         print("______________________________________________________________________")
 
-        conf.os.system(f"sudo nmap -v -sn {net_host} -o {sn_output}/netscan.txt") #No Port Scan
+        conf.os.system(f"sudo nmap -sn {net_host} -o {sn_output}/netscan.txt") #No Port Scan
 
         print("______________________________________________________________________")
 
