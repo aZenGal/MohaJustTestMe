@@ -30,7 +30,7 @@ Permet également d'automatiser la génération de rapports lors d'un test de p�
 ```
 $ git clone https://github.com/aZenGal/MohaJustTestMe.git
 $ cd MohaJustTestMe
-$ chmod +x ./install.sh && chmod +x MohaJustTestMe
+$ chmod +x ./install.sh && chmod +x MohaJustTestMe.py
 $ ./install.sh
 $ MohaJustTestMe
 ```
