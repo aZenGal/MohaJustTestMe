@@ -32,7 +32,7 @@ $ git clone https://github.com/aZenGal/MohaJustTestMe.git
 $ cd MohaJustTestMe
 $ chmod +x ./install.sh && chmod +x MohaJustTestMe.py
 $ ./install.sh
-$ MohaJustTestMe
+$ ./MohaJustTestMe.py
 ```
 Egalement, les dépendances peuvent être installés manuellement avec `pip install -r requirements.txt`.
 
