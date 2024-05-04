@@ -1,10 +1,10 @@
 # 📡 MohaJustTestMe
-Outil codé en Python permettant d'automatiser l'exécution des outils suivants : Nmap , Nikto et Dirsearch mais permet aussi d'automatiser la génération de rapports lors d'un test de pénétration.
-Outil codé en Python permettant d'automatiser l'exécution des outils suivants : Nmap , Nikto et Dirsearch.<br/> 
+Outil codé en Python permettant d'automatiser l'exécution des outils suivants : Nmap , Nikto et Dirb mais permet aussi d'automatiser la génération de rapports lors d'un test de pénétration.
+Outil codé en Python permettant d'automatiser l'exécution des outils suivants : Nmap , Nikto et Dirb.<br/> 
 Permet également d'automatiser la génération de rapports lors d'un test de pénétration.
 * Effectuer un scan de réseau avec Nmap
 * Effectuer un scan de vulnérabilités avec Nikto
-* Effectuer une recherche de répertoires avec Dirsearch
+* Effectuer une recherche de répertoires avec Dirb
 * Générer des rapports
 * Automatiser le test de pénétration
 ------------------------------------
@@ -23,22 +23,22 @@ Permet également d'automatiser la génération de rapports lors d'un test de p�
 |-----------------------|-------------------------------------------------------------------------------------------------------------------|
 | Nmap                  | Permet de scanner les ports ouverts et identifier les services hébergés                                           |
 | Nikto                 | Permet de scanner un hôte et d’afficher toutes les failles potentielles.                                          |
-| Dirsearch             | Permet effectuer un scan de contenu Web.                                                                          |
+| Dirb                  | Permet effectuer un scan de contenu Web.                                                                          |
 
 ## 🛠 Installation
 ### Linux & Unix
 ```
 $ git clone https://github.com/aZenGal/MohaJustTestMe.git
 $ cd MohaJustTestMe
-$ chmod +x install.sh
+$ chmod +x ./install.sh && chmod +x MohaJustTestMe
 $ ./install.sh
 $ MohaJustTestMe
 ```
 Egalement, les dépendances peuvent être installés manuellement avec `pip install -r requirements.txt`.
 
 # ✨ Plus d'informations
-Ce projet est libre et open source, codé (en parti) par Mohamed-Ali.
+Ce projet est libre et open source, codé (majoritairement) par Mohamed-Ali.
 
 # Merci à
 * Trabelsi Mohamed-Ali - Ultra Security Team Leader <br/>
-* Iliass A. - Ultra Security Team Helper
+* ChatGPT 4 - Ultra Security Team Helper
