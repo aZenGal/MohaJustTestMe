@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
 import conf as conf
+from modules.bruteforce import read_nmap_result
 
 
 def full_scan():
     print("===========================================================")
-    print(conf.colored(conf.text2art("Tous les scans", "small"), "cyan"))
+    print(conf.colored(conf.text2art("Test automatisé", "small"), "cyan"))
     print("===========================================================")
 
     full_host = input(conf.colored("\nSaisir l'URL cible (ex: opensource.com) : ", "green", attrs=["bold"]))
@@ -21,36 +22,11 @@ def full_scan():
 
     print("___________________________________________________________________________")
 
-    conf.create_dir(full_output)
-
-    # gnome_installed = True if conf.os.path.exists("/usr/bin/gnome-terminal") else False
-
-    # if len(full_host) == 0:
-    #     conf.clear()
-
-    #     print("Choix non valide Réessayez")
-    #     conf.re_open()
-
-    #     conf.full_host = None
-    # elif gnome_installed:
-    #     conf.os.system(
-    #         f"gnome-terminal -- bash -c 'nmap -A {full_ip} -o \"{full_output}/nmap.txt\" && bash'"
-    #     )
-    #     conf.clear()
-
-    #     conf.os.system(
-    #         f"gnome-terminal -- bash -c 'dirb {full_host} /usr/share/wordlists/dirb/common.txt -o \"{full_output}/dirb.txt\" && bash'"
-    #     )
-    #     conf.clear()
-
-    #     conf.os.system(
-    #         f"gnome-terminal -- bash -c 'nikto -h {full_host} -output \"{full_output}/nikto.txt\" && bash'"
-    #     )
-    #     conf.clear()
-
-    # else:
     conf.os.system(f"nmap -v -A {full_ip} -o {full_output}/nmap.txt")
 
     conf.os.system(f"dirb {full_host} /usr/share/wordlists/dirb/common.txt -o \"{full_output}/dirb.txt")
 
     conf.os.system(f"nikto -h {full_host_clean} -output {full_output}/nikto.txt")
+    
+    nmap_result = "{full_output}/nmap.txt"
+    read_nmap_result(result_path=nmap_result, user=None)

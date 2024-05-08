@@ -34,13 +34,15 @@ def bruteforce():
     print(conf.colored(f"Bruteforce terminé pour le port {target_port}", "green", attrs=["bold"],))
 
 
-def read_nmap_result():
+def read_nmap_result(result_path=None, user=None):
     print("==============================================")
     print(conf.colored(conf.text2art("Lire un résultat Nmap", "small"), "cyan"))
     print("==============================================")
 
-    result_path = input(conf.colored("\nEntrez le chemin vers le fichier de résultat Nmap [reports/Nmap/HOST/SCAN.txt]: ", "green", attrs=["bold"]))
-    user = input(conf.colored("Login : ", "green", attrs=["bold"]))
+    if result_path is None: 
+        result_path = input(conf.colored("\nEntrez le chemin vers le fichier de résultat Nmap [reports/Nmap/HOST/SCAN.txt]: ", "green", attrs=["bold"]))
+    if user is None:
+        user = input(conf.colored("Login : ", "green", attrs=["bold"]))
     try:
         with open(result_path, 'r') as file:
             lines = file.readlines()
