@@ -14,11 +14,8 @@ def nikto_scan():
     nikto_host = input(
         conf.colored("\nEntrez la cible: ", "green", attrs=["bold"]))
     nikto_output = input(
-        conf.colored(
-            f"Saisir le dossier de sortie - [defaut: reports/Nikto/{nikto_host}/]: ",
-            "green",
-            attrs=["bold"],
-        ))
+        conf.colored(f"Saisir le dossier de sortie - [defaut: reports/Nikto/{nikto_host}/]: ",
+            "green", attrs=["bold"],))
 
     conf.not_valid(nikto_scan, nikto_host)
     nikto_output = conf.dir_output(nikto_output, "reports/Nikto", nikto_host)
@@ -29,4 +26,3 @@ def nikto_scan():
 
     print("______________________________________________________________________")
     conf.call_def(menu, 0)
-    

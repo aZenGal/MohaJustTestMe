@@ -15,7 +15,7 @@ def main():
         print(conf.colored("\n1. Nmap Scan", "yellow", attrs=["bold"]))
         print(conf.colored("2. Dirb Scan", "yellow", attrs=["bold"]))
         print(conf.colored("3. Nikto Scan", "yellow", attrs=["bold"]))
-        print(conf.colored("4. Bruteforce", "yellow", attrs=["bold"]))
+        print(conf.colored("4. Hydra Bruteforce", "yellow", attrs=["bold"]))
         print(conf.colored("A. Test automatisé", "yellow", attrs=["bold"]))
         print(conf.colored("E. Quitter\n", "yellow", attrs=["bold"]))
         print("===================================================================")

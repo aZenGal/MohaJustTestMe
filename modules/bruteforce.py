@@ -10,6 +10,7 @@ def bruteforce():
     target_host = input(conf.colored("\nEntrez l'adresse IP de la cible: ", "green", attrs=["bold"]))
     target_port = int(input(conf.colored("Entrez le port: ", "green", attrs=["bold"])))
     user = input(conf.colored("Login : ", "green", attrs=["bold"]))
+    hydra_output = input(conf.colored(f"Saisir le dossier de sortie - [defaut: reports/hydra/{target_host}/]: ", "green", attrs=["bold"],))
 
     # Mapping des ports à des services pour définir automatiquement le service cible dans Hydra
     ports_to_services = {
@@ -18,27 +19,27 @@ def bruteforce():
         23: 'telnet'  # Telnet
     }
 
-    output = conf.dir_output(bruteforce, "reports/hydra/", target_host)
-    conf.create_dir(output)
+    conf.not_valid(bruteforce, target_host)
+    hydra_output = conf.dir_output(hydra_output, "reports/hydra", target_host)
+    conf.create_dir(hydra_output)
 
     service = ports_to_services.get(target_port, 'unknown')
     if service == 'unknown':
-        print(f"Port {target_port} non pris en charge pour le bruteforce par ce script.")
+        print(conf.colored(f"Port {target_port} non pris en charge pour le bruteforce par ce script.", "green", attrs=["bold"],))
         return
 
     # Lancement de la commande hydra adaptée au service détecté
-    command = f"hydra -l {user} -P /usr/share/wordlists/rockyou.txt {service}://{target_host} -o report/{target_host}/hydra.txt"
-    print(command)
-    print(f"Lancement du bruteforce sur {target_host} port {target_port} pour {service}...")
-    conf.os.system(command)
-    print("Bruteforce terminé pour le port ", target_port)
+    print(conf.colored(f"Lancement du bruteforce sur {target_host} port {target_port} pour {service}...", "green", attrs=["bold"],))
+    conf.os.system(f"hydra -V -l {user} -P /usr/share/wordlists/rockyou.txt {service}://{target_host} -o reports/hydra/{target_host}/hydra.txt")
+    print(conf.colored(f"Bruteforce terminé pour le port {target_port}", "green", attrs=["bold"],))
+
 
 def read_nmap_result():
     print("==============================================")
     print(conf.colored(conf.text2art("Lire un résultat Nmap", "small"), "cyan"))
     print("==============================================")
 
-    result_path = input(conf.colored("\nEntrez le chemin vers le fichier de résultat Nmap: ", "green", attrs=["bold"]))
+    result_path = input(conf.colored("\nEntrez le chemin vers le fichier de résultat Nmap [reports/Nmap/HOST/SCAN.txt]: ", "green", attrs=["bold"]))
     user = input(conf.colored("Login : ", "green", attrs=["bold"]))
     try:
         with open(result_path, 'r') as file:
@@ -50,9 +51,6 @@ def read_nmap_result():
             }
             ip_address = None
             
-            output = conf.dir_output(read_nmap_result, "reports/hydra/", ip_address)
-            conf.create_dir(output)
-            
             # Extraction de l'adresse IP à partir de la ligne "Nmap scan report for"
             for line in lines:
                 if "Nmap scan report for" in line:
@@ -60,7 +58,7 @@ def read_nmap_result():
                     break
 
             if not ip_address:
-                print("Adresse IP non trouvée dans le fichier de résultat Nmap.")
+                print(conf.colored("Adresse IP non trouvée dans le fichier de résultat Nmap.", "green", attrs=["bold"],))
                 return
 
             found_ports = []
@@ -70,20 +68,20 @@ def read_nmap_result():
                     if port in ports_to_bruteforce:
                         found_ports.append(port)
                         service = ports_to_bruteforce[port]
-                        print(f"Port {port} ouvert pour {service} sur {ip_address}. Convient à un bruteforce.")
+                        print(conf.colored(f"Port {port} ouvert pour {service} sur {ip_address}. Convient à un bruteforce.", "green", attrs=["bold"],))
                         # Lancer le bruteforce avec Hydra
-                        command = f"hydra -l {user} -P /usr/share/wordlists/rockyou.txt {service}://{ip_address} -o report/{ip_address}/hydra.txt"
-                        print(f"Lancement du bruteforce sur {ip_address} port {port} pour {service}...")
+                        command = f"hydra -l {user} -P /usr/share/wordlists/rockyou.txt {service}://{ip_address} -o reports/hydra/{ip_address}/hydra.txt"
+                        print(conf.colored(f"Lancement du bruteforce sur {ip_address} port {port} pour {service}...", "green", attrs=["bold"],))
                         conf.os.system(command)
-                        print(f"Bruteforce terminé pour le port {port} ({service}).")
+                        print(conf.colored(f"Bruteforce terminé pour le port {port} ({service}).", "green", attrs=["bold"],))
                         
             if not found_ports:
-                print("Aucun port pertinent ouvert trouvé.")
+                print(conf.colored("Aucun port pertinent ouvert trouvé.", "green", attrs=["bold"],))
 
     except FileNotFoundError:
-        print("Le fichier de résultats Nmap n'a pas été trouvé à l'emplacement spécifié.")
+        print(conf.colored("Le fichier de résultats Nmap n'a pas été trouvé à l'emplacement spécifié.", "green", attrs=["bold"],))
     except Exception as e:
-        print(f"Une erreur est survenue lors de la lecture du fichier Nmap: {e}")
+        print(conf.colored(f"Une erreur est survenue lors de la lecture du fichier Nmap: {e}", "green", attrs=["bold"],))
 
     print("______________________________________________________________________")
 
