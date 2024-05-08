@@ -11,13 +11,15 @@ def bruteforce():
     target_port = int(input(conf.colored("Entrez le port: ", "green", attrs=["bold"])))
     user = input(conf.colored("Login : ", "green", attrs=["bold"]))
 
-
     # Mapping des ports à des services pour définir automatiquement le service cible dans Hydra
     ports_to_services = {
         21: 'ftp',  # FTP
         22: 'ssh',  # SSH
         23: 'telnet'  # Telnet
     }
+
+    output = conf.dir_output(bruteforce, "reports/hydra/", target_host)
+    conf.create_dir(output)
 
     service = ports_to_services.get(target_port, 'unknown')
     if service == 'unknown':
@@ -26,6 +28,7 @@ def bruteforce():
 
     # Lancement de la commande hydra adaptée au service détecté
     command = f"hydra -l {user} -P /usr/share/wordlists/rockyou.txt {service}://{target_host} -o report/{target_host}/hydra.txt"
+    print(command)
     print(f"Lancement du bruteforce sur {target_host} port {target_port} pour {service}...")
     conf.os.system(command)
     print("Bruteforce terminé pour le port ", target_port)
@@ -46,6 +49,9 @@ def read_nmap_result():
                 23: 'telnet'  # Telnet
             }
             ip_address = None
+            
+            output = conf.dir_output(read_nmap_result, "reports/hydra/", ip_address)
+            conf.create_dir(output)
             
             # Extraction de l'adresse IP à partir de la ligne "Nmap scan report for"
             for line in lines:

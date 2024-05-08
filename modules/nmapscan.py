@@ -13,7 +13,7 @@ def nmap_scan():
         tcp_output = input(conf.colored(f"Saisir le dossier de sortie - [defaut: reports/Nmap/{tcp_host}/]: ", "green", attrs=["bold"],))
         tcp_ip = conf.socket.gethostbyname(tcp_host)
 
-        conf.not_valid(udp_scan, tcp_host)
+        conf.not_valid(tcp_scan, tcp_host)
         tcp_output = conf.dir_output(tcp_output, "reports/Nmap/", tcp_host)
         conf.create_dir(tcp_output)
 
