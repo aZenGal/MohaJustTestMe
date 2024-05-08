@@ -29,7 +29,7 @@ def main():
         elif conf.ans == "3":
             conf.call_def(conf.nikto_scan)
         elif conf.ans == "4":
-            conf.call_def(conf.bruteforce)
+            conf.call_def(conf.menu_bruteforce)
         elif conf.ans == "A":
             conf.call_def(conf.full_scan)
         elif conf.ans == "E":
