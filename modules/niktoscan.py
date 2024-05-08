@@ -2,6 +2,10 @@
 
 import conf as conf
 
+def menu():
+    conf.clear()
+    conf.re_open()
+
 def nikto_scan():
     print("==============================================")
     print(conf.colored(conf.text2art("Nikto Scan", "small"), "cyan"))
@@ -24,3 +28,5 @@ def nikto_scan():
     conf.os.system(f"nikto -h {nikto_host} -output {nikto_output}/nikto.txt")
 
     print("______________________________________________________________________")
+    conf.call_def(menu, 0)
+    

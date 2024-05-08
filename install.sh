@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 
-DEPENDENCIES="nmap nikto git python3-pip"
+DEPENDENCIES="nmap nikto dirsearch git python3-pip"
 
 # Vérifier que le système d'exploitation est Kali Linux
 if [ "$(grep 'Kali' /etc/issue)" ]; then
     sudo apt-get update
     sudo apt-get install $DEPENDENCIES -y
+    
+    # Décompression de la wordlist rockyou
+    if [ -f /usr/share/wordlists/rockyou.txt.gz ]; then
+        sudo gunzip -k /usr/share/wordlists/rockyou.txt.gz
+        echo "rockyou.txt a été décompressé avec succès."
+    else
+        echo "Le fichier rockyou.txt.gz n'a pas été trouvé."
+    fi
 else
     echo "Ce script est uniquement destiné à être exécuté sur Kali Linux"
     exit 1
