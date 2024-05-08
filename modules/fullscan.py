@@ -49,8 +49,8 @@ def full_scan():
     #     conf.clear()
 
     # else:
-        conf.os.system(f"nmap -v -A {full_ip} -o {full_output}/nmap.txt")
+    conf.os.system(f"nmap -v -A {full_ip} -o {full_output}/nmap.txt")
 
-        conf.os.system(f"dirb {full_host} /usr/share/wordlists/dirb/common.txt -o \"{full_output}/dirb.txt")
+    conf.os.system(f"dirb {full_host} /usr/share/wordlists/dirb/common.txt -o \"{full_output}/dirb.txt")
 
-        conf.os.system(f"nikto -h {full_host_clean} -output {full_output}/nikto.txt")
+    conf.os.system(f"nikto -h {full_host_clean} -output {full_output}/nikto.txt")

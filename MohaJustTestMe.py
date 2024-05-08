@@ -15,7 +15,8 @@ def main():
         print(conf.colored("\n1. Nmap Scan", "yellow", attrs=["bold"]))
         print(conf.colored("2. Dirb Scan", "yellow", attrs=["bold"]))
         print(conf.colored("3. Nikto Scan", "yellow", attrs=["bold"]))
-        print(conf.colored("A. Tout les Scans", "yellow", attrs=["bold"]))
+        print(conf.colored("4. Bruteforce", "yellow", attrs=["bold"]))
+        print(conf.colored("A. Test automatisé", "yellow", attrs=["bold"]))
         print(conf.colored("E. Quitter\n", "yellow", attrs=["bold"]))
         print("===================================================================")
 
@@ -27,6 +28,8 @@ def main():
             conf.call_def(conf.Dirb_scan)
         elif conf.ans == "3":
             conf.call_def(conf.nikto_scan)
+        elif conf.ans == "4":
+            conf.call_def(conf.bruteforce)
         elif conf.ans == "A":
             conf.call_def(conf.full_scan)
         elif conf.ans == "E":
