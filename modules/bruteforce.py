@@ -34,25 +34,16 @@ def bruteforce():
     print(conf.colored(f"Bruteforce terminé pour le port {target_port}", "green", attrs=["bold"],))
 
 
-def read_nmap_result(result_path=None, user=None):
-    print("==============================================")
-    print(conf.colored(conf.text2art("Lire un résultat Nmap", "small"), "cyan"))
-    print("==============================================")
-
-    if result_path is None: 
+def read_nmap_result(result_path=None, user=None, output=None):
+    if result_path is None:
         result_path = input(conf.colored("\nEntrez le chemin vers le fichier de résultat Nmap [reports/Nmap/HOST/SCAN.txt]: ", "green", attrs=["bold"]))
     if user is None:
         user = input(conf.colored("Login : ", "green", attrs=["bold"]))
     try:
         with open(result_path, 'r') as file:
             lines = file.readlines()
-            ports_to_bruteforce = {
-                21: 'ftp',  # FTP
-                22: 'ssh',  # SSH
-                23: 'telnet'  # Telnet
-            }
             ip_address = None
-            
+
             # Extraction de l'adresse IP à partir de la ligne "Nmap scan report for"
             for line in lines:
                 if "Nmap scan report for" in line:
@@ -60,30 +51,39 @@ def read_nmap_result(result_path=None, user=None):
                     break
 
             if not ip_address:
-                print(conf.colored("Adresse IP non trouvée dans le fichier de résultat Nmap.", "green", attrs=["bold"],))
+                print(conf.colored("Adresse IP non trouvée dans le fichier de résultat Nmap.", "green", attrs=["bold"]))
                 return
 
+            # Définir le dossier de sortie après avoir trouvé l'IP
+            if output is None:
+                default_output = input(conf.colored(f"Entrez le dossier de sortie [défaut : reports/All/{ip_address}/] : ", "green", attrs=["bold"]))
+                if not default_output:
+                    output = f"reports/All/{ip_address}/"
+                else:
+                    output = default_output
+            conf.create_dir(output)
+
+            ports_to_bruteforce = {21: 'ftp', 22: 'ssh', 23: 'telnet'}
             found_ports = []
+
             for line in lines:
                 if '/tcp' in line and 'open' in line:
                     port = int(line.split('/')[0].strip())
                     if port in ports_to_bruteforce:
-                        found_ports.append(port)
                         service = ports_to_bruteforce[port]
-                        print(conf.colored(f"Port {port} ouvert pour {service} sur {ip_address}. Convient à un bruteforce.", "green", attrs=["bold"],))
-                        # Lancer le bruteforce avec Hydra
-                        command = f"hydra -l {user} -P /usr/share/wordlists/rockyou.txt {service}://{ip_address} -o reports/hydra/{ip_address}/hydra.txt"
-                        print(conf.colored(f"Lancement du bruteforce sur {ip_address} port {port} pour {service}...", "green", attrs=["bold"],))
+                        print(conf.colored(f"Port {port} ouvert pour {service} sur {ip_address}. Convient à un bruteforce.", "green", attrs=["bold"]))
+                        command = f"hydra -l {user} -P /usr/share/wordlists/rockyou.txt {service}://{ip_address} -o {output}/hydra.txt"
+                        print(conf.colored(f"Lancement du bruteforce sur {ip_address} port {port} pour {service}...", "green", attrs=["bold"]))
                         conf.os.system(command)
-                        print(conf.colored(f"Bruteforce terminé pour le port {port} ({service}).", "green", attrs=["bold"],))
-                        
+                        print(conf.colored(f"Bruteforce terminé pour le port {port} ({service}).", "green", attrs=["bold"]))
+
             if not found_ports:
-                print(conf.colored("Aucun port pertinent ouvert trouvé.", "green", attrs=["bold"],))
+                print(conf.colored("Aucun port pertinent ouvert trouvé.", "green", attrs=["bold"]))
 
     except FileNotFoundError:
-        print(conf.colored("Le fichier de résultats Nmap n'a pas été trouvé à l'emplacement spécifié.", "green", attrs=["bold"],))
+        print(conf.colored("Le fichier de résultats Nmap n'a pas été trouvé à l'emplacement spécifié.", "green", attrs=["bold"]))
     except Exception as e:
-        print(conf.colored(f"Une erreur est survenue lors de la lecture du fichier Nmap: {e}", "green", attrs=["bold"],))
+        print(conf.colored(f"Une erreur est survenue lors de la lecture du fichier Nmap: {e}", "green", attrs=["bold"]))
 
     print("______________________________________________________________________")
 

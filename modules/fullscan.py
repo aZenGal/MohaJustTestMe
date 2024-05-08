@@ -3,13 +3,15 @@
 import conf as conf
 from modules.bruteforce import read_nmap_result
 
+def menu():
+    conf.re_open()
 
 def full_scan():
     print("===========================================================")
-    print(conf.colored(conf.text2art("Test automatisé", "small"), "cyan"))
+    print(conf.colored(conf.text2art("Test automatise", "small"), "cyan"))
     print("===========================================================")
 
-    full_host = input(conf.colored("\nSaisir l'URL cible (ex: opensource.com) : ", "green", attrs=["bold"]))
+    full_host = input(conf.colored("\nSaisir l'IP/URL cible (ex: opensource.com) : ", "green", attrs=["bold"]))
     full_host_clean = full_host.replace('https://', '').replace('http://', '')
     full_output = input(conf.colored(f"Saisir le dossier de sortie - [default: reports/All/{full_host_clean}/]: ", "green", attrs=["bold"],))
 
@@ -28,5 +30,8 @@ def full_scan():
 
     conf.os.system(f"nikto -h {full_host_clean} -output {full_output}/nikto.txt")
     
-    nmap_result = "{full_output}/nmap.txt"
-    read_nmap_result(result_path=nmap_result, user=None)
+    nmap_result = f"{full_output}/nmap.txt"
+    read_nmap_result(result_path=nmap_result, user=None, output=full_output)
+    
+    conf.call_def(menu, 0)
+    
