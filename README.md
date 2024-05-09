@@ -21,9 +21,11 @@ Permet également d'automatiser la génération de rapports lors d'un test de p�
 
 | Outil                 | Description                                                                                                       |
 |-----------------------|-------------------------------------------------------------------------------------------------------------------|
-| Nmap                  | Permet de scanner les ports ouverts et identifier les services hébergés                                           |
+| Nmap                  | Permet de scanner les ports ouverts et identifier les services hébergés.                                          |
 | Nikto                 | Permet de scanner un hôte et d’afficher toutes les failles potentielles.                                          |
 | Dirb                  | Permet effectuer un scan de contenu Web.                                                                          |
+| Hydra                 | Permet de réaliser des bruteforces.                                                                               |
+| LinPEAS               | permet d'analyser un système Linux à la recherche de chemins pour élever les privilèges.                          |
 
 ## 🛠 Installation
 ### Linux & Unix
@@ -32,7 +34,7 @@ $ git clone https://github.com/aZenGal/MohaJustTestMe.git
 $ cd MohaJustTestMe
 $ chmod +x ./install.sh && chmod +x MohaJustTestMe.py
 $ ./install.sh
-$ ./MohaJustTestMe.py
+$ sudo python3 MohaJustTestMe.py
 ```
 Egalement, les dépendances peuvent être installés manuellement avec `pip install -r requirements.txt`.
 
