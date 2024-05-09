@@ -9,7 +9,7 @@ if [ "$(grep 'Kali' /etc/issue)" ]; then
     
     # Décompression de la wordlist rockyou
     if [ -f /usr/share/wordlists/rockyou.txt.gz ]; then
-        sudo gunzip -k /usr/share/wordlists/rockyou.txt.gz
+        sudo gunzip -f -k /usr/share/wordlists/rockyou.txt.gz
         echo "rockyou.txt a été décompressé avec succès."
     else
         echo "Le fichier rockyou.txt.gz n'a pas été trouvé."

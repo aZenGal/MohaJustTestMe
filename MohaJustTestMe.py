@@ -26,7 +26,7 @@ def main():
         if conf.ans == "1":
             conf.call_def(conf.nmap_scan)
         elif conf.ans == "2":
-            conf.call_def(conf.Dirb_scan)
+            conf.call_def(conf.dirb_scan)
         elif conf.ans == "3":
             conf.call_def(conf.nikto_scan)
         elif conf.ans == "4":
