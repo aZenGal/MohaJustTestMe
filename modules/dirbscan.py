@@ -1,5 +1,5 @@
 import conf as conf
-import requests  # Assurez-vous d'installer ce paquet si nécessaire
+import requests
 
 def dirb_scan(dir_host=None, dir_output=None):
     print("===================================================================")
@@ -9,8 +9,8 @@ def dirb_scan(dir_host=None, dir_output=None):
     if dir_host is None:
         dir_host = input(conf.colored("\nSaisissez une cible IP ou URL:", "green", attrs=["bold"]))
         # Ajouter https si aucune schéma n'est spécifié
-        if not (dir_host.startswith('http://') or dir_host.startswith('https://')):
-            dir_host = f"https://{dir_host}"
+    if not (dir_host.startswith('http://') or dir_host.startswith('https://')):
+        dir_host = f"https://{dir_host}"
 
     # Essayer avec HTTPS, puis avec HTTP si HTTPS échoue
     try:

@@ -13,8 +13,8 @@ def full_scan():
     print(conf.colored(conf.text2art("Pentest automatique", "small"), "cyan"))
     print("===============================================================================")
 
-    full_host = input(conf.colored("\nSaisir l'IP/URL cible (ex: https://www.opensource.com) : ", "green", attrs=["bold"]))
-    full_host_clean = full_host.replace('https://', '').replace('http://', '')
+    full_host = input(conf.colored("\nSaisir l'IP/URL cible (ex: www.opensource.com) : ", "green", attrs=["bold"]))
+    full_host_clean = full_host.replace('https://', '').replace('http://', '').replace('/','')
     full_output = input(conf.colored(f"Saisir le dossier de sortie - [default: reports/All/{full_host_clean}/]: ", "green", attrs=["bold"],))
 
     conf.not_valid(full_scan, full_host)
