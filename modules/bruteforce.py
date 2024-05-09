@@ -56,9 +56,9 @@ def read_nmap_result(result_path=None, user=None, output=None):
 
             # Définir le dossier de sortie après avoir trouvé l'IP
             if output is None:
-                default_output = input(conf.colored(f"Entrez le dossier de sortie [défaut : reports/All/{ip_address}/] : ", "green", attrs=["bold"]))
+                default_output = input(conf.colored(f"Entrez le dossier de sortie [défaut : reports/hydra/{ip_address}/] : ", "green", attrs=["bold"]))
                 if not default_output:
-                    output = f"reports/All/{ip_address}/"
+                    output = f"reports/hydra/{ip_address}/"
                 else:
                     output = default_output
             conf.create_dir(output)

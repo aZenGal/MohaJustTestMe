@@ -14,6 +14,7 @@ from modules.fullscan import full_scan
 from modules.niktoscan import nikto_scan
 from modules.nmapscan import nmap_scan
 from modules.bruteforce import menu_bruteforce
+from modules.audit import main_linpeas
 
 ans = True
 version = "1.0"

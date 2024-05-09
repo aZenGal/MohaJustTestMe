@@ -2,7 +2,6 @@
 
 import conf as conf
 
-
 def nmap_scan():
     def tcp_scan():
         conf.clear()

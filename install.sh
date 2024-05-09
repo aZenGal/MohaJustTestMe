@@ -22,3 +22,5 @@ fi
 pip3 install --user -r conf/requirements.txt
 sudo ln -s "$(pwd)"/MohaJustTestMe.py /usr/local/bin/MohaJustTestMe
 git clone --depth 1 https://github.com/maurosoria/dirsearch.git ~/.local/share/dirsearch
+curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh -o ~/.local/share/linpeas.sh
+
