@@ -2,6 +2,7 @@
 
 import conf as conf
 from modules.bruteforce import read_nmap_result
+from modules.audit import main_linpeas
 
 def menu():
     conf.re_open()
@@ -32,6 +33,9 @@ def full_scan():
     
     nmap_result = f"{full_output}/nmap.txt"
     read_nmap_result(result_path=nmap_result, user=None, output=full_output)
+    
+    hydra_result = f"{full_output}/hydra.txt"
+    main_linpeas(hydra_output_file=hydra_result, host=full_host_clean)
     
     conf.call_def(menu, 0)
     
