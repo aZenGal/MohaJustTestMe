@@ -8,9 +8,9 @@ def menu():
     conf.re_open()
 
 def full_scan():
-    print("===========================================================")
-    print(conf.colored(conf.text2art("Test automatise", "small"), "cyan"))
-    print("===========================================================")
+    print("===============================================================================")
+    print(conf.colored(conf.text2art("Pentest automatique", "small"), "cyan"))
+    print("===============================================================================")
 
     full_host = input(conf.colored("\nSaisir l'IP/URL cible (ex: opensource.com) : ", "green", attrs=["bold"]))
     full_host_clean = full_host.replace('https://', '').replace('http://', '')
@@ -23,17 +23,25 @@ def full_scan():
 
     full_ip = conf.socket.gethostbyname(full_host_clean)
 
-    print("___________________________________________________________________________")
-
+    print("____________________________________________________________________________")
+    print(conf.colored("Nmap port scan", "yellow", attrs=["bold"]))
     conf.os.system(f"nmap -v -A {full_ip} -o {full_output}/nmap.txt")
 
+    print("____________________________________________________________________________")
+    print(conf.colored("Dirb Enumeration scan", "yellow", attrs=["bold"]))
     conf.os.system(f"dirb {full_host} /usr/share/wordlists/dirb/common.txt -o \"{full_output}/dirb.txt")
 
+    print("____________________________________________________________________________")
+    print(conf.colored("Nikto Vulnerability scan", "yellow", attrs=["bold"]))
     conf.os.system(f"nikto -h {full_host_clean} -output {full_output}/nikto.txt")
     
+    print("____________________________________________________________________________")
+    print(conf.colored("Hydra Bruteforce", "yellow", attrs=["bold"]))
     nmap_result = f"{full_output}/nmap.txt"
     read_nmap_result(result_path=nmap_result, user=None, output=full_output)
     
+    print("____________________________________________________________________________")
+    print(conf.colored("LinPEAS Audit ", "yellow", attrs=["bold"]))
     hydra_result = f"{full_output}/hydra.txt"
     main_linpeas(hydra_output_file=hydra_result, host=full_host_clean)
     

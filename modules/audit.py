@@ -28,7 +28,7 @@ def execute_linpeas_ssh(ssh_client, host):
     remote_path = '/tmp/linpeas.sh'
     output_path = '/dev/shm/linpeas.txt'
     local_path = os.path.expanduser('/home/kali/.local/share/linpeas.sh')
-    local_output_path = f"./{host}_linpeas_output.txt"
+    local_output_path = f"/home/kali/MohaJustTestMe/reports/{host}_linpeas_output.txt"
     
     sftp = ssh_client.open_sftp()
     try:
