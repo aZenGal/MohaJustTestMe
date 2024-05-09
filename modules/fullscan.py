@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import conf as conf
+from modules.dirbscan import dirb_scan
 from modules.bruteforce import read_nmap_result
 from modules.audit import main_linpeas
 
@@ -12,7 +13,7 @@ def full_scan():
     print(conf.colored(conf.text2art("Pentest automatique", "small"), "cyan"))
     print("===============================================================================")
 
-    full_host = input(conf.colored("\nSaisir l'IP/URL cible (ex: opensource.com) : ", "green", attrs=["bold"]))
+    full_host = input(conf.colored("\nSaisir l'IP/URL cible (ex: https://www.opensource.com) : ", "green", attrs=["bold"]))
     full_host_clean = full_host.replace('https://', '').replace('http://', '')
     full_output = input(conf.colored(f"Saisir le dossier de sortie - [default: reports/All/{full_host_clean}/]: ", "green", attrs=["bold"],))
 
@@ -29,8 +30,9 @@ def full_scan():
 
     print("____________________________________________________________________________")
     print(conf.colored("Dirb Enumeration scan", "yellow", attrs=["bold"]))
-    conf.os.system(f"dirb {full_host} /usr/share/wordlists/dirb/common.txt -o \"{full_output}/dirb.txt")
-
+    #conf.os.system(f"dirb {full_host} /usr/share/wordlists/dirb/common.txt -o {full_output}/dirb.txt")
+    dirb_scan(dir_host=full_host,dir_output=full_output)
+    
     print("____________________________________________________________________________")
     print(conf.colored("Nikto Vulnerability scan", "yellow", attrs=["bold"]))
     conf.os.system(f"nikto -h {full_host_clean} -output {full_output}/nikto.txt")

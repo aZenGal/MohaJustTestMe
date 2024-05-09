@@ -8,7 +8,7 @@ import requests
 from art import *
 from termcolor import colored
 
-from modules.dirbscan import Dirb_scan
+from modules.dirbscan import dirb_scan
 from modules.exit import exit
 from modules.fullscan import full_scan
 from modules.niktoscan import nikto_scan
