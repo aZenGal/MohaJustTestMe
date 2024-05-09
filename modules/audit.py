@@ -39,7 +39,7 @@ def execute_linpeas_ssh(ssh_client, host):
         stdout.channel.recv_exit_status()
 
         # Un petit délai pour s'assurer que le fichier est écrit avant de le récupérer
-        time.sleep(300)
+        time.sleep(250)
 
         # Récupérer le fichier
         sftp.get(output_path, local_output_path)
