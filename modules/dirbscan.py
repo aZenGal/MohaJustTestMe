@@ -42,6 +42,6 @@ def dirb_scan(dir_host=None, dir_output=None):
     conf.create_dir(dir_output)
 
     # Exécution de dirb
-    conf.os.system(f"dirb {dir_host} /usr/share/wordlists/dirb/common.txt -o {dir_output}dirb.txt")
+    conf.os.system(f"dirb {dir_host} /usr/share/wordlists/dirb/common.txt -o {dir_output}/dirb.txt")
 
     print("______________________________________________________________________")
